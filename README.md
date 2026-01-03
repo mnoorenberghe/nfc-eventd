@@ -2,11 +2,14 @@
 
 NFC Event Daemon - A daemon that monitors NFC device for tag insertions/removals.
 
+[Archived Wiki Page](https://web.archive.org/web/20200630215251/http://nfc-tools.org/index.php/Nfc-eventd)
+
 ## Building the Debian Package
 
 To build the .deb package from source:
 
 ```bash
+autoreconf -vis
 dpkg-buildpackage -us -uc
 ```
 
