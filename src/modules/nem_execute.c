@@ -168,7 +168,7 @@ nem_execute_event_handler(nfc_device* nfc_device, nfc_target* tag, const nem_eve
     // DBG ( "Onerror is set to: '%s'", onerrorstr );
 
     if ( _tag_uid == NULL ) {
-        ERR( "%s", "Unable to read tag UID... This should not happend !" );
+        ERR( "%s", "Unable to read tag UID... This should not happen !" );
         switch ( onerr ) {
         case ONERROR_IGNORE:
             break;
