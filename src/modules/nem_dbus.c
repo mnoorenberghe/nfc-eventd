@@ -39,26 +39,21 @@ void
 tag_get_uid(nfc_device* nfc_device, const nfc_target* tag, char **dest) {
   DBG("tag_get_uid(%08x, %08x, %08x)", nfc_device, tag, dest);
 
-    nfc_target target;
     debug_print_tag(tag);
-    /// @TODO We don't need to reselect tag to get his UID: nfc_target contains this data.
-    // Poll for a ISO14443A (MIFARE) tag
-    if ( nfc_initiator_select_passive_target ( nfc_device, tag->nm, tag->nti.nai.abtUid, tag->nti.nai.szUidLen, &target ) ) {
-        *dest = malloc(target.nti.nai.szUidLen*sizeof(char));
-        size_t szPos;
-        char *pcUid = *dest;
-        for (szPos=0; szPos < target.nti.nai.szUidLen; szPos++) {
-            sprintf(pcUid, "%02x",target.nti.nai.abtUid[szPos]);
-            pcUid += 2;
-        }
-        pcUid[0]='\0';
-        DBG( "ISO14443A (MIFARE) tag found: uid=0x%s", *dest );
-        nfc_initiator_deselect_target ( nfc_device );
-    } else {
-        *dest = NULL;
-        DBG("%s", "ISO14443A (MIFARE) tag not found" );
+    // Extract UID directly from nfc_target - no need to reselect
+    *dest = malloc(tag->nti.nai.szUidLen*sizeof(char)*2+1);
+    if (*dest == NULL) {
+        ERR("%s", "Unable to allocate memory for tag UID");
         return;
     }
+    size_t szPos;
+    char *pcUid = *dest;
+    for (szPos=0; szPos < tag->nti.nai.szUidLen; szPos++) {
+        sprintf(pcUid, "%02x",tag->nti.nai.abtUid[szPos]);
+        pcUid += 2;
+    }
+    pcUid[0]='\0';
+    DBG( "ISO14443A (MIFARE) tag found: uid=0x%s", *dest );
 }
 
 static void lose (const char *fmt, ...) G_GNUC_NORETURN G_GNUC_PRINTF (1, 2);
