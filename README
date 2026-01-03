@@ -1,0 +1,19 @@
+# nfc-eventd
+
+NFC Event Daemon - A daemon that monitors NFC device for tag insertions/removals.
+
+## Building the Debian Package
+
+To build the .deb package from source:
+
+```bash
+dpkg-buildpackage -us -uc
+```
+
+This will create the package files in the parent directory without signing them.
+
+## Description
+
+nfc-eventd is a daemon that looks for tag insertions/removes from NFC device.
+It is provided with two NEM (NFC Event Modules) which allow many kinds of
+usage of these events.

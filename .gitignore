@@ -1,0 +1,29 @@
+# Autotools generated files
+/autom4te.cache/
+/aclocal.m4
+/compile
+/config.guess
+/config.h.in
+/config.sub
+/configure
+/depcomp
+/install-sh
+/ltmain.sh
+/missing
+/m4/
+INSTALL
+/Makefile.in
+/conf/Makefile.in
+/src/Makefile.in
+/src/debug/Makefile.in
+/src/modules/Makefile.in
+/src/nfcconf/Makefile.in
+
+# Build artifacts
+config.log
+config.status
+configure~
+*~
+
+# CodeQL
+_codeql_detected_source_root
