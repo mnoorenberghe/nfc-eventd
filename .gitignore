@@ -12,5 +12,9 @@
 /missing
 /m4/
 INSTALL
-Makefile.in
-*.in
+/Makefile.in
+/conf/Makefile.in
+/src/Makefile.in
+/src/debug/Makefile.in
+/src/modules/Makefile.in
+/src/nfcconf/Makefile.in

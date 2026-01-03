@@ -100,6 +100,10 @@ tag_get_uid(nfc_device* nfc_device, nfc_target* tag, char **dest) {
 
   // Extract UID directly from nfc_target - no need to reselect
   *dest = malloc(tag->nti.nai.szUidLen*sizeof(char)*2+1);
+  if (*dest == NULL) {
+      ERR("%s", "Unable to allocate memory for tag UID");
+      return;
+  }
   size_t szPos;
   char *pcUid = *dest;
   for (szPos=0; szPos < tag->nti.nai.szUidLen; szPos++) {
