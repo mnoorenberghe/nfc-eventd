@@ -18,3 +18,12 @@ INSTALL
 /src/debug/Makefile.in
 /src/modules/Makefile.in
 /src/nfcconf/Makefile.in
+
+# Build artifacts
+config.log
+config.status
+configure~
+*~
+
+# CodeQL
+_codeql_detected_source_root
